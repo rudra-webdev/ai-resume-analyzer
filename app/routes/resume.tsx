@@ -49,7 +49,7 @@ const Resume = () => {
         loadResume();
     }, [id]);
   return (
-    <main className="!pt-0">
+    <main className="min-h-screen bg-white">
         <nav>
             <Link to="/" className="back-button">
                 <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" />
@@ -57,7 +57,7 @@ const Resume = () => {
             </Link>
         </nav>
         <div className="flex flex-row w-full max-lg:flex-col-reverse">
-            <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover h-[100vh] sticky top-0 items-center justify-center]">
+            <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover min-h-screen lg:sticky lg:top-0 flex items-center justify-center py-10">
                 {imageUrl && resumeUrl && (
                     <div className="feedback-section animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-w-xl:h-fit w-fit">
                         <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -82,10 +82,9 @@ const Resume = () => {
                 <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
                 {feedback ?(
                     <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-                    <Summary feedback={feedback}/>
-                    <ATS score={feedback.ATS.score || 0 } suggestion={feedback.ATS.tips || []} />
-                    <Details feedback={feedback}/>
-
+                        <Summary feedback={feedback} />
+                        <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
+                        <Details feedback={feedback} />
 
                     </div>
 
